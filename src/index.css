@@ -1,0 +1,428 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Astro Live TV — observatory ink · frost · aurora mint · sky */
+    --background: 215 30% 4%;
+    --foreground: 210 25% 94%;
+
+    --card: 215 28% 8% / 0.55;
+    --card-foreground: 210 25% 94%;
+
+    --popover: 215 28% 7%;
+    --popover-foreground: 210 25% 94%;
+
+    --primary: 166 72% 64%;
+    --primary-foreground: 215 30% 6%;
+
+    --secondary: 215 22% 14%;
+    --secondary-foreground: 210 25% 94%;
+
+    --muted: 215 18% 12%;
+    --muted-foreground: 215 12% 58%;
+
+    --accent: 199 90% 72%;
+    --accent-foreground: 215 30% 6%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 25% 98%;
+
+    --border: 215 20% 18%;
+    --input: 215 18% 14%;
+    --ring: 166 72% 64%;
+
+    --radius: 0.5rem;
+
+    --cosmic: 166 72% 64%;
+    --cosmic-foreground: 215 30% 6%;
+    --mystic: 215 28% 16%;
+    --mystic-foreground: 210 25% 94%;
+    --golden: 199 90% 72%;
+    --golden-foreground: 215 30% 6%;
+    --stellar: 210 40% 78%;
+    --stellar-foreground: 215 30% 6%;
+
+    --mobile-bottom-nav-height: calc(3.5rem + env(safe-area-inset-bottom, 0px) + 1rem);
+
+    --sidebar-background: 215 28% 6%;
+    --sidebar-foreground: 210 25% 94%;
+    --sidebar-primary: 166 72% 64%;
+    --sidebar-primary-foreground: 215 30% 6%;
+    --sidebar-accent: 215 22% 12%;
+    --sidebar-accent-foreground: 210 25% 94%;
+    --sidebar-border: 215 18% 16%;
+    --sidebar-ring: 166 72% 64%;
+
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body: "Sora", system-ui, sans-serif;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    background-color: hsl(215 30% 4%);
+    min-height: 100vh;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+@layer components {
+  .alpha-text {
+    background: linear-gradient(120deg, #5eead4 0%, #7dd3fc 45%, #e8f0f6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .alpha-card {
+    @apply border border-white/10 bg-[hsl(215_28%_8%/0.55)] backdrop-blur-md;
+  }
+
+  .alpha-divider {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(166 72% 64% / 0.45),
+      hsl(199 90% 72% / 0.35),
+      transparent
+    );
+  }
+
+  .alpha-pill {
+    @apply inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium
+      text-slate-300/80 transition-colors hover:bg-white/5 hover:text-teal-200;
+  }
+
+  .alpha-pill-active {
+    @apply bg-teal-400/10 text-teal-200 ring-1 ring-teal-400/30;
+  }
+
+  .alpha-pill-subtle {
+    @apply inline-flex items-center rounded-md px-2.5 py-1 text-xs text-slate-400/70
+      transition-colors hover:text-sky-200;
+  }
+
+  .alpha-pill-subtle-active {
+    @apply text-sky-200;
+  }
+
+  .alpha-page {
+    @apply px-4 py-8 md:py-12;
+  }
+
+  .alpha-link {
+    @apply text-teal-300/80 transition-colors hover:text-teal-200;
+  }
+
+  .glass-card {
+    @apply alpha-card;
+  }
+
+  .path-card {
+    @apply relative overflow-hidden alpha-card;
+  }
+
+  .path-card-num {
+    @apply pointer-events-none absolute right-4 top-3 font-display text-4xl font-semibold
+      text-white/[0.04];
+  }
+
+  .section-ornament {
+    @apply mb-3 flex items-center justify-center gap-2;
+  }
+
+  .mobile-nav-offset {
+    padding-bottom: var(--mobile-bottom-nav-height);
+  }
+
+  .mobile-nav-scroll-pad {
+    padding-bottom: 1rem;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Legacy class aliases so existing pages keep styling */
+  .grahveda-text {
+    @apply alpha-text;
+  }
+  .grahveda-card {
+    @apply alpha-card;
+  }
+  .grahveda-divider {
+    @apply alpha-divider;
+  }
+  .grahveda-pill {
+    @apply alpha-pill;
+  }
+  .grahveda-pill-active {
+    @apply alpha-pill-active;
+  }
+  .grahveda-pill-subtle {
+    @apply alpha-pill-subtle;
+  }
+  .grahveda-pill-subtle-active {
+    @apply alpha-pill-subtle-active;
+  }
+  .grahveda-page {
+    @apply alpha-page;
+  }
+  .grahveda-link {
+    @apply alpha-link;
+  }
+  .sutra-text {
+    @apply alpha-text;
+  }
+  .sutra-card {
+    @apply alpha-card;
+  }
+  .sutra-divider {
+    @apply alpha-divider;
+  }
+  .sutra-pill {
+    @apply alpha-pill;
+  }
+  .sutra-pill-active {
+    @apply alpha-pill-active;
+  }
+  .sutra-link {
+    @apply alpha-link;
+  }
+  .sutra-page {
+    @apply alpha-page;
+  }
+  .sutra-glow {
+    box-shadow: 0 0 0 1px hsl(166 72% 64% / 0.2);
+  }
+  .grahveda-glow-gold {
+    box-shadow: 0 0 24px hsl(166 72% 64% / 0.18);
+  }
+  .grahveda-hero-digit {
+    @apply alpha-text;
+  }
+  .grahveda-orbit-ring {
+    animation: alpha-spin 48s linear infinite;
+  }
+  .grahveda-orbit-ring-reverse {
+    animation: alpha-spin 64s linear infinite reverse;
+  }
+}
+
+@keyframes alpha-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes alpha-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+
+@keyframes alpha-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes alpha-pulse-ring {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+@keyframes alpha-orb-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate3d(12px, -28px, 0) scale(1.08);
+    opacity: 0.75;
+  }
+}
+
+.alpha-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(48px);
+  pointer-events: none;
+  animation: alpha-orb-float 14s ease-in-out infinite;
+}
+
+.alpha-orb-a {
+  top: 12%;
+  left: 8%;
+  width: 220px;
+  height: 220px;
+  background: rgba(94, 234, 212, 0.14);
+}
+
+.alpha-orb-b {
+  top: 55%;
+  right: 5%;
+  width: 280px;
+  height: 280px;
+  background: rgba(56, 189, 248, 0.12);
+  animation-duration: 18s;
+  animation-delay: -4s;
+}
+
+.alpha-orb-c {
+  bottom: 8%;
+  left: 35%;
+  width: 180px;
+  height: 180px;
+  background: rgba(125, 211, 252, 0.1);
+  animation-duration: 16s;
+  animation-delay: -8s;
+}
+
+.alpha-orb-d {
+  top: 35%;
+  left: 55%;
+  width: 140px;
+  height: 140px;
+  background: rgba(253, 224, 171, 0.08);
+  animation-duration: 20s;
+  animation-delay: -2s;
+}
+
+@keyframes alpha-nebula-breathe {
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes alpha-aurora-wave {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translateX(-4%) skewY(-4deg);
+  }
+  50% {
+    opacity: 0.65;
+    transform: translateX(4%) skewY(-2deg);
+  }
+}
+
+@keyframes alpha-logo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes alpha-glow-breathe {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.alpha-preloader-spark {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: #5eead4;
+  box-shadow: 0 0 12px #5eead4, 0 0 24px rgba(94, 234, 212, 0.5);
+  animation: alpha-spark-fly 3.5s linear infinite;
+}
+
+.alpha-preloader-spark-a {
+  left: 12%;
+  top: 70%;
+  animation-duration: 3.2s;
+}
+
+.alpha-preloader-spark-b {
+  left: 70%;
+  top: 20%;
+  background: #7dd3fc;
+  box-shadow: 0 0 12px #7dd3fc;
+  animation-duration: 4s;
+  animation-delay: -1s;
+}
+
+.alpha-preloader-spark-c {
+  left: 40%;
+  top: 85%;
+  background: #e8f0f6;
+  animation-duration: 2.8s;
+  animation-delay: -0.5s;
+}
+
+@keyframes alpha-spark-fly {
+  0% {
+    transform: translate(0, 0) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(80px, -180px) scale(0.2);
+    opacity: 0;
+  }
+}
